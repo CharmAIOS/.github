@@ -1,4 +1,4 @@
-**AI Operating System for the AI-native era**
+## Operating System for the AI-native era
 
 Charm is a modular AI OS. With a single unified API and plugin-based architecture, developers can compose, deploy, and scale AI applications across models, tools, frameworks, and SaaS platforms.
 
