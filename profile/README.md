@@ -1,6 +1,6 @@
 ## Operating System for the AI-native era
 
-Charm is a modular AI OS. With a single unified API and plugin-based architecture, developers can compose, deploy, and scale AI applications across models, tools, frameworks, and SaaS platforms.
+Charm empowers developers and organizations to rapidly build the next generation of AI-native applications — as simple, intuitive, and scalable as real software.
 
 ---
 
