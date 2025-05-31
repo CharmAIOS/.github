@@ -6,10 +6,6 @@ Empowering everyone to rapidly build the next generation of AI-native applicatio
 
 ## About Us
 
-We believe that in the near future, AI will be deeply embedded into every product, workflow, and daily experience.
+We believe that in the near future, AI will be deeply embedded into every product, workflow, and daily experience, seamlessly collaborating, connecting, and integrating with the world around us to truly unlock its power and potential for people.
 
-It should collaborate, connect, and integrate seamlessly with the world around us — enabling people to truly benefit from its power and potential.
-
-Our mission is to build a unified operating platform that consolidates today’s fragmented AI toolchain into a composable, cooperative system — redefining how AI works!
-
-Ultimately, we aim to make building and using AI applications feel like working with real software — intuitive, scalable, and accessible to all.
+Our mission is to build a unified operating platform that brings order to today’s fragmented AI ecosystem — making the creation and use of AI applications as seamless, scalable, and intuitive as building real software.
