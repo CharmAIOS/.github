@@ -1,51 +1,42 @@
 # Welcome to Charm
 
-Charm is an open-source, modular AI operating system designed to be neutral that enables developers to compose, deploy, and scale AI applications across models, tools, frameworks, and platforms — all through a single unified API and plugin-based architecture.
+Charm is an open-source, modular, and framework-neutral AI operating system that enables developers to compose, deploy, and scale AI agents across different frameworks, tools, and platforms through a unified API and a plugin-based architecture. All agents can be developed and executed on a single open platform, collaborating, interoperating, and evolving seamlessly.
 
-## Core feature modules
-
-**Execution Routing**:
-Intelligently selects and adapts the optimal model and compute backend based on defined needs and policies, with built-in support for resource governance.
-
-**Multi-Agent Management**:
-Orchestrates multi-agent workflows with full lifecycle control and inter-agent handoff.
-
-**Semantic & Format adaptation**:
-Standardizes diverse inputs into structured semantics & formats.
-
-**Integration Bridge**:
-Supporting multi-turn and long-horizon agent workflows through persistent, bidirectional communication with external platforms.
+Our mission is to eliminate the fragmentation of today’s AI development and execution environments, empowering agent-based applications to grow into a truly interconnected ecosystem — one that ultimately becomes a natural part of human society.
 
 ## Architecture
 
 ```mermaid
-graph LR
-    UI[Unified Interface]
+flowchart TD
 
-    UI[Unified Interface] --> SM
-
-    subgraph Charm Core
-        SM[Semantic Middleware &<br/>Format Adapter] --> ORCH[Task Lifecycle<br/>Orchestration & Planning]
-        ORCH --> EXE[Execution &<br/>Model Routing]
-        EXE --> IEB[Integration &<br/>Event Bridge]
+subgraph DevSide
+  UI[Charm Interface]
 end
-```
-Unified Ingestion:
-Accepts and normalizes inputs from diverse external sources (e.g., agent frameworks, iPaaS, protocol-based triggers) through pluggable adapters.
 
-```mermaid
-flowchart LR
-    UI[Unified Interface]
+subgraph CharmControl
+  REG[UAC Registry & Agent Catalog]
+  CFG[Config Manager]
+  POL[Policy & Governance Engine]
+end
 
-    PL1[Agent Flow]
-    PL2[SaaS API]
-    PL3[UI / CLI]
-    PL4[Prompt]
+subgraph CharmRuntime
+  ROUTE[Routing Engine]
+  EXEC[Execution Orchestrator]
+  STATE[State & Session Sync]
+end
 
-    PL1 --> UI
-    PL2 --> UI
-    PL3 --> UI
-    PL4 --> UI
+subgraph Framework
+    Crew[CrewAI / LangChain]
+end
+
+subgraph Platform
+    Dify[Dify / Copilot Studio]
+end
+
+DevSide --> CharmControl
+CharmControl --> CharmRuntime
+CharmRuntime --> Framework
+CharmRuntime --> Platform
 ```
 Pluggable Orchestration & Execution:
 All tasks flow through a unified orchestration pipeline, where major subsystems expose plugin interfaces that allow you to inject or swap components (e.g., model routers, workflow planners, or SDK bridges) to compose workflows tailored to custom requirements
