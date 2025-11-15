@@ -14,7 +14,7 @@ subgraph DevSide
 end
 
 subgraph CharmControl
-  REG[UAC Registry & Agent Catalog]
+  REG[Agent Registry]
   CFG[Config Manager]
   POL[Policy & Governance Engine]
 end
@@ -23,31 +23,41 @@ subgraph CharmRuntime
   ROUTE[Routing Engine]
   EXEC[Execution Orchestrator]
   STATE[State & Session Sync]
+  SEM[Semantic & Format Adapter]
 end
 
-subgraph Framework
-    Crew[CrewAI / LangChain]
-end
+subgraph Connectors
+  subgraph FB[Persona-based]
+    Crew[CrewAI]
+    AG2[ag2]
+  end
 
-subgraph Platform
-    Dify[Dify / Copilot Studio]
+  subgraph WB[Workflow-based]
+    LC[LangChain]
+    Dify[Dify]
+  end
+
+  subgraph PB[Prompt-based]
+    GPT[ChatGPT]
+    CLA[Claude]
+  end
+
 end
 
 DevSide --> CharmControl
 CharmControl --> CharmRuntime
-CharmRuntime --> Framework
-CharmRuntime --> Platform
+CharmRuntime --> Connectors
 ```
 Pluggable Orchestration & Execution:
-All tasks flow through a unified orchestration pipeline, where major subsystems expose plugin interfaces that allow you to inject or swap components (e.g., model routers, workflow planners, or SDK bridges) to compose workflows tailored to custom requirements
+All tasks flow through a unified orchestration pipeline, where major subsystems expose plugin interfaces that allow you to inject or swap components to compose workflows tailored to custom requirements
 
 ```mermaid
 flowchart LR
     subgraph SYSTEM_INTERNAL [Modular Runtime]
-        SM[Semantic Middleware & Format Adapter]
-        ORCH[Task Lifecycle Orchestration & Planning]
-        EXE[Execution & Model Routing]
-        IEB[Integration & Event Bridge]
+        SM[Semantic & Format]
+        ORCH[Task Lifecycle]
+        EXE[Inference]
+        IEB[Integration]
     end
 
     SM --> ORCH --> EXE --> IEB
@@ -55,6 +65,6 @@ flowchart LR
     %% Plugin injection points
     PL_SM[Semantic Parsers, Format Adapters] --> SM
     PL_ORCH[Routing Policies, Task Planner] --> ORCH
-    PL_EXE[Model Selector, Compute Strategy] --> EXE
-    PL_IEB[SaaS Connector, Framework Bridge] --> IEB
+    PL_EXE[RouterChain, Provider Plugins] --> EXE
+    PL_IEB[Framework Toolkits, iPaaS Connectors, Native API Providers] --> IEB
 ```
